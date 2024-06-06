@@ -1,15 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import Navbar from './components/Navbar/Navbar'
+import { Routes, Route } from 'react-router-dom'
+import Cart from './pages/Cart/Cart'
+import Header from './components/Header/Header'
+import Home from './pages/Home/Home'
+import Checkout from './pages/Checkout/Checkout'
+import DetailsPage from './pages/DetailsPage/DetailsPage'
+import LoginPage from './pages/LoginPage/LoginPage'
+import SignupPage from './pages/SignUp/SignUp'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const App = () => {
   return (
-    <>
-      
-    </>
+    <div className='app'>
+      {/* I refer ch-9 for NavLink. Reference: https://conestoga-bookshelf.vitalsource.com/reader/books/9781484243916/epubcfi/6/22[%3Bvnd.vst.idref%3DA426054_2_En_9_Chapter]!/4/8/22[Sec4]/12[Par77]/30[PC29]/4/16/1:7[%C2%A0%C2%A0.%2C..] */}
+      <Routes>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/cart" element={<Cart/>}></Route>
+            <Route path="/checkout" element={<Checkout/>}></Route>
+            <Route path="/details" element={<DetailsPage/>}></Route>
+            <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/signup" element={<SignupPage/>}></Route>
+      </Routes>
+
+    </div>
   )
 }
 
