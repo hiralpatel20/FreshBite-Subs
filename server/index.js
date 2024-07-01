@@ -10,6 +10,26 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
+// Below code is to define the GraphQL schema
+// Reference: https://conestoga.desire2learn.com/d2l/le/content/1001970/viewContent/21346158/View 
+const typeDefs = gql`
+  type User {
+    id: ID!
+    username: String!
+    email: String!
+    password: String!
+    role: String!
+  }
+
+  type Query {
+    getUserByEmail(email: String!): User
+  }
+
+  type Mutation {
+    signup(username: String!, email: String!, password: String!, role: String!): User
+    login(email: String!, password: String!): User
+  }
+`;
 
 // Connection to Mongodb using mongoose
 // Reference: https://conestoga.desire2learn.com/d2l/le/content/1001970/viewContent/21346159/View 
