@@ -42,6 +42,17 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.error('MongoDB connection error:', err);
   });
 
+// Here I define User schema using Mongoose Schema
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: { type: String, required: true },
+});
+
+// Here I create User model
+const User = mongoose.model('User', userSchema);
+
 
 // Below is the function to start ApolloServer with defined schema and resolvers
 async function startServer() {
