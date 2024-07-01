@@ -53,6 +53,44 @@ const userSchema = new mongoose.Schema({
 // Here I create User model
 const User = mongoose.model('User', userSchema);
 
+// Here I define resolvers for GraphQL operations
+const resolvers = {
+  Query: {
+    // This resolver is for querying user by email
+    getUserByEmail: async (_, { email }) => {
+      try {
+        const user = await User.findOne({ email });
+        return user;
+      } catch (error) {
+        throw new Error(`Error retrieving user by email: ${error.message}`);
+      }
+    },
+  },
+  Mutation: {
+    // This resolver is for user signup
+    signup: async (_, { username, email, password, role }) => {
+      try {
+        const newUser = await User.create({ username, email, password, role });
+        return newUser;
+      } catch (error) {
+        throw new Error(`Error creating user: ${error.message}`);
+      }
+    },
+    // This resolver is for user login
+    login: async (_, { email, password }) => {
+      try {
+        const user = await User.findOne({ email, password });
+        if (!user) {
+          throw new Error('User not found or password incorrect');
+        }
+        return user;
+      } catch (error) {
+        throw new Error(`Error logging in: ${error.message}`);
+      }
+    },
+  },
+};
+
 
 // Below is the function to start ApolloServer with defined schema and resolvers
 async function startServer() {
