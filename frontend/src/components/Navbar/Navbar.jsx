@@ -1,9 +1,19 @@
 import React from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
-import {Routes, NavLink, Route} from "react-router-dom";
+import {Routes, NavLink, Route, useNavigate} from "react-router-dom";
 
 const Navbar = () => {
+  
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Below line is to clear authentication data from localStorage
+    // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+    localStorage.removeItem('authToken'); 
+    navigate('/');
+  };
+
   return (
    <>
     <div className='navbar'>
