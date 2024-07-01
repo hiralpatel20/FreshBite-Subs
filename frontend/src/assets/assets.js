@@ -22,6 +22,7 @@ import steak from './steak.jpg'
 import texmex from './texmex.jpg'
 import UltimateClub from './UltimateClub.jpg'
 import aboutus_banner from './aboutus_banner.jpg'
+import adminhome from './adminhome.jpg'
 
 // Here I export all the images as an object so I can use this object where I have to use these images
 export const assets = {
@@ -48,4 +49,5 @@ export const assets = {
     texmex, // Reference: https://www.google.com/url?sa=i&url=https%3A%2F%2Fmrsub.ca%2Fsub_categories%2Ftexmexblackbean%2F&psig=AOvVaw0GpzRo7ik8hVXWCzcrK3Ou&ust=1717721952071000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDttpvjxYYDFQAAAAAdAAAAABAE
     UltimateClub, // Reference: https://www.google.com/imgres?q=ultimate%20clubmr%20sub&imgurl=https%3A%2F%2Fb2038387.smushcdn.com%2F2038387%2Fwp-content%2Fuploads%2F2019%2F01%2FUltimateClub12inchSub-300x200-1.jpg%3Flossy%3D1%26strip%3D1%26webp%3D1&imgrefurl=https%3A%2F%2Fmrsub.ca%2Fsub_categories%2Fultimateclub%2F&docid=KTSCqxBF5Qpf0M&tbnid=5v5e9OkGQ2ATbM&vet=12ahUKEwiup6Kn48WGAxXBHNAFHdmkJV4QM3oECBcQAA..i&w=300&h=200&hcb=2&ved=2ahUKEwiup6Kn48WGAxXBHNAFHdmkJV4QM3oECBcQAA
     aboutus_banner, // Reference: https://www.shutterstock.com/search/sandwich-banner
+    adminhome // Reference: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Ffresh-meat-cheese-sub-with-parma-black-background_48817248.htm&psig=AOvVaw0e7d42TrEYFt6Yv0GHcyT2&ust=1719691321420000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJjJ_8yL_4YDFQAAAAAdAAAAABAJ
 }
