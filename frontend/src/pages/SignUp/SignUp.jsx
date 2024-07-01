@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import './SignUp.css';
 import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';

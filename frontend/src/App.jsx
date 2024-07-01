@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import SignupPage from './pages/SignUp/SignUp'
 import ContactUs from './pages/ContactUs/ContactUs'
 import AboutUs from './pages/AboutUs/AboutUs'
+import AdminHome from './pages/AdminHomePage/AdminHome'
 
 
 const App = () => {
