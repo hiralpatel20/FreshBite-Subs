@@ -21,3 +21,25 @@ mongoose.connect(process.env.MONGODB_URI, {
   }).catch(err => {
     console.error('MongoDB connection error:', err);
   });
+
+
+// Below is the function to start ApolloServer with defined schema and resolvers
+async function startServer() {
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
+    });
+  
+    await server.start();
+  
+    // Below line is to apply ApolloServer middleware to Express app
+    server.applyMiddleware({ app });
+  
+    // Below code is to start the Express server
+    app.listen({ port: process.env.PORT || 4000 }, () =>
+      console.log(`Server running at http://localhost:${process.env.PORT || 4000}${server.graphqlPath}`)
+    );
+  }
+  
+  // Here I call the function to start the server
+  startServer();
