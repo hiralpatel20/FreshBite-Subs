@@ -17,14 +17,15 @@ const App = () => {
     <div className='app'>
       {/* I refer ch-9 for NavLink. Reference: https://conestoga-bookshelf.vitalsource.com/reader/books/9781484243916/epubcfi/6/22[%3Bvnd.vst.idref%3DA426054_2_En_9_Chapter]!/4/8/22[Sec4]/12[Par77]/30[PC29]/4/16/1:7[%C2%A0%C2%A0.%2C..] */}
       <Routes>
-            <Route path="/" element={<Home/>}></Route>
+            <Route path="/user-home" element={<Home/>}></Route>
             <Route path="/cart" element={<Cart/>}></Route>
             <Route path="/checkout" element={<Checkout/>}></Route>
             <Route path="/details" element={<DetailsPage/>}></Route>
-            <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/" element={<LoginPage/>}></Route>
             <Route path="/signup" element={<SignupPage/>}></Route>
             <Route path="/about" element={<AboutUs/>}></Route>
             <Route path="/contact" element={<ContactUs/>}></Route>
+            <Route path="/admin-home" element={<AdminHome/>}></Route>
       </Routes>
 
     </div>
