@@ -8,6 +8,8 @@ import Checkout from './pages/Checkout/Checkout'
 import DetailsPage from './pages/DetailsPage/DetailsPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SignupPage from './pages/SignUp/SignUp'
+import ContactUs from './pages/ContactUs/ContactUs'
+import AboutUs from './pages/AboutUs/AboutUs'
 
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
             <Route path="/details" element={<DetailsPage/>}></Route>
             <Route path="/login" element={<LoginPage/>}></Route>
             <Route path="/signup" element={<SignupPage/>}></Route>
+            <Route path="/about" element={<AboutUs/>}></Route>
+            <Route path="/contact" element={<ContactUs/>}></Route>
       </Routes>
 
     </div>
