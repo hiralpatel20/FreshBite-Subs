@@ -31,6 +31,7 @@ const Navbar = () => {
             <NavLink className="nav-item" to="/about"><a>About Us</a></NavLink>
             <NavLink className="nav-item" to="/contact"><a>Contact</a></NavLink>
             <NavLink className="nav-item" to="/cart"><a>Cart</a></NavLink>
+            <a className="nav-item" onClick={handleLogout} style={{ cursor: 'pointer' }}><a>Logout</a></a>
           </nav>
          </div>
      </div>
