@@ -11,6 +11,8 @@ import SignupPage from './pages/SignUp/SignUp'
 import ContactUs from './pages/ContactUs/ContactUs'
 import AboutUs from './pages/AboutUs/AboutUs'
 import AdminHome from './pages/AdminHomePage/AdminHome'
+import UpcomingOffers from './pages/UpcommingOffers/UpcomingOffers'
+import OrderManagement from './pages/OrderManagement/OrderManagement'
 
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
             <Route path="/about" element={<AboutUs/>}></Route>
             <Route path="/contact" element={<ContactUs/>}></Route>
             <Route path="/admin-home" element={<AdminHome/>}></Route>
+            <Route path="/upcoming-offers" element={<UpcomingOffers/>}></Route>
+            <Route path="/order-management" element={<OrderManagement/>}></Route>
       </Routes>
 
     </div>
