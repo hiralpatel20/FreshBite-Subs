@@ -1,0 +1,6 @@
+Steps to run the project
+
+1. The project does not have node modules, hence those needs to installed in both the 'frontend' and 'server' folder. 
+Open terminal in frontend folder and server folder -> Run 'npm i' command in both the terminals.
+2. In the 'server' terminal, run 'node index.js' command.
+3. In the 'frontend' terminal, run 'npm run dev' command. The terminal gives a link to the localhost, click on the link to access the website.
