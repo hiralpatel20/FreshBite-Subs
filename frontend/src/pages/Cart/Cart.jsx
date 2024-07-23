@@ -34,12 +34,16 @@ const Cart = () => {
       return item;
     });
     setCartItems(updatedCartItems);
+     // This below line is to save the updated cart items to localStorage for persistence
+     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   // Here I added the function for removing the item from the cart
   const handleRemoveItem = (id) => {
     const updatedCartItems = cartItems.filter(item => item.id !== id);
     setCartItems(updatedCartItems);
+     // This below line is to save the updated cart items to localStorage for persistence
+     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   // Here I added the function to count the total amount of items in the cart
