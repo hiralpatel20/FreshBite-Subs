@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Checkout.css';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
+import { useLocation } from 'react-router-dom';
 
 const Checkout = ({ cartItems }) => {
+   // Here I get the current location object from React Router
+   const location = useLocation();
+
+   // This extract cart items from the location state, or default to an empty array if not available
+   const locationCartItems = location.state?.cartItems || [];
+ 
+   // This initialize state to hold cart items
+   const [items, setItems] = useState(locationCartItems);
+ 
+   useEffect(() => {
+     console.log("Location Cart Items:", locationCartItems);
+     // Here I update the local state with the cart items from the location state
+     setItems(locationCartItems);
+   }, [locationCartItems]);
+ 
   // Here I create the state to manage form data
   const [formData, setFormData] = useState({
     fullName: '',
@@ -32,6 +48,11 @@ const Checkout = ({ cartItems }) => {
     console.log(formData);
   };
   
+   // Here I created the function to handle the total
+   const calculateTotal = () => {
+    return items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+
   return (
    <div> 
     <Navbar />
@@ -39,6 +60,19 @@ const Checkout = ({ cartItems }) => {
       <h2>Checkout</h2>
       <div className="order-summary">
         <h3>Order Summary</h3>
+        <ul>
+          {items.length ? (
+              items.map(item => (
+                <li key={item.id}>
+                  <span>{item.name}</span>
+                  <span>${item.price}</span>
+                  <span>Quantity: {item.quantity}</span>
+                </li>
+              ))
+            ) : (
+              <p>No items in cart</p>
+            )}
+          </ul>
         <div className="total">
           <span>Total:</span>
         </div>
