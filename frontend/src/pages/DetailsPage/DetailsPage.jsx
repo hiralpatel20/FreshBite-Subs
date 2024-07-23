@@ -68,14 +68,17 @@ const DetailsPage = () => {
       <div class="details-page">
     <div class="details-sectiion">
       <div class="SubSize">
+      <p>ID: {sub.id}</p>
+      <p>Name: {sub.name}</p>
+      <p>Price: ${sub.price}</p>
        <h3>Choose your sub size:</h3> 
        <form class="grid-container">
         <div class="grid-item">
-       <input type="radio" id="small" name="subSize" value="small"></input>
+       <input type="radio" id="small" name="subSize" value="small" onChange={handleOptionChange}></input>
        <label for="small">Small (6-inch)</label><br></br>
         </div>
         <div class="grid-item">
-       <input type="radio" id="large" name="subSize" value="large"></input>
+       <input type="radio" id="large" name="subSize" value="large" onChange={handleOptionChange}></input>
        <label for="large">Large (12-inch)</label><br></br>
        </div>
        </form>
@@ -85,32 +88,32 @@ const DetailsPage = () => {
        <h3>Choice of Bread or Wrap:</h3> 
        <form class="grid-container">
         <div class="grid-item">
-       <input type="radio" id="mediterranean-herb" name="breadChoice" value="mediterranean-herb"></input>
+       <input type="radio" id="mediterranean-herb" name="breadChoice" value="mediterranean-herb" onChange={handleOptionChange}></input>
         <label for="mediterranean-herb">Mediterranean Herb</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="cheddar-bliss" name="breadChoice" value="cheddar-bliss"></input>
+        <input type="radio" id="cheddar-bliss" name="breadChoice" value="cheddar-bliss" onChange={handleOptionChange}></input>
         <label for="cheddar-bliss">Cheddar Bliss</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="wholesome-multigrain" name="breadChoice" value="wholesome-multigrain"></input>
+        <input type="radio" id="wholesome-multigrain" name="breadChoice" value="wholesome-multigrain" onChange={handleOptionChange}></input>
         <label for="wholesome-multigrain">Wholesome Multigrain</label><br></br>
         </div>
         
         <div class="grid-item">
-        <input type="radio" id="classic-white" name="breadChoice" value="classic-white"></input>
+        <input type="radio" id="classic-white" name="breadChoice" value="classic-white" onChange={handleOptionChange}></input>
         <label for="classic-white">Classic White</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="whole-wheat-tortilla-wrap" name="breadChoice" value="whole-wheat-tortilla-wrap"></input>
+        <input type="radio" id="whole-wheat-tortilla-wrap" name="breadChoice" value="whole-wheat-tortilla-wrap" onChange={handleOptionChange}></input>
         <label for="whole-wheat-tortilla-wrap">Whole Wheat Tortilla Wrap</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="white-tortilla-wrap" name="breadChoice" value="white-tortilla-wrap"></input>
+        <input type="radio" id="white-tortilla-wrap" name="breadChoice" value="white-tortilla-wrap" onChange={handleOptionChange}></input>
         <label for="white-tortilla-wrap">White Tortilla Wrap</label>
         </div>
         </form>
@@ -120,37 +123,37 @@ const DetailsPage = () => {
       <h3>Choice of Cheese:</h3>
       <form class="grid-container">
         <div class="grid-item">
-        <input type="radio" id="mozzarella" name="cheeseChoice" value="mozzarella"></input>
+        <input type="radio" id="mozzarella" name="cheeseChoice" value="mozzarella" onChange={handleOptionChange}></input>
         <label for="mozzarella">Mozzarella Cheese</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="cheddar" name="cheeseChoice" value="cheddar"></input>
+        <input type="radio" id="cheddar" name="cheeseChoice" value="cheddar" onChange={handleOptionChange}></input>
         <label for="cheddar">Cheddar Cheese</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="mozza-cheddar-blend" name="cheeseChoice" value="mozza-cheddar-blend"></input>
+        <input type="radio" id="mozza-cheddar-blend" name="cheeseChoice" value="mozza-cheddar-blend" onChange={handleOptionChange}></input>
         <label for="mozza-cheddar-blend">Shredded Mozza-Cheddar Blend</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="habanero" name="cheeseChoice" value="habanero"></input>
+        <input type="radio" id="habanero" name="cheeseChoice" value="habanero" onChange={handleOptionChange}></input>
         <label for="habanero">Habanero Cheese</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="parmesan" name="cheeseChoice" value="parmesan"></input>
+        <input type="radio" id="parmesan" name="cheeseChoice" value="parmesan" onChange={handleOptionChange}></input>
         <label for="parmesan">Parmesan Cheese</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="feta" name="cheeseChoice" value="feta"></input>
+        <input type="radio" id="feta" name="cheeseChoice" value="feta" onChange={handleOptionChange}></input>
         <label for="feta">Feta Cheese</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="no-cheese" name="cheeseChoice" value="no-cheese"></input>
+        <input type="radio" id="no-cheese" name="cheeseChoice" value="no-cheese" onChange={handleOptionChange}></input>
         <label for="no-cheese">No Cheese</label>
         </div>
         </form>
@@ -160,72 +163,72 @@ const DetailsPage = () => {
     <h3>Choose your toppings:</h3>
     <form class="grid-container">
         <div class="grid-item">
-        <input type="checkbox" id="lettuce" name="toppingChoice" value="lettuce"></input>
+        <input type="checkbox" id="lettuce" name="toppingChoice" value="lettuce" onChange={handleOptionChange}></input>
         <label for="lettuce">Lettuce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="tomato" name="toppingChoice" value="tomato"></input>
+        <input type="checkbox" id="tomato" name="toppingChoice" value="tomato" onChange={handleOptionChange}></input>
         <label for="tomato">Tomato</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="onions" name="toppingChoice" value="onions"></input>
+        <input type="checkbox" id="onions" name="toppingChoice" value="onions" onChange={handleOptionChange}></input>
         <label for="onions">Onions</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="cucumber" name="toppingChoice" value="cucumber"></input>
+        <input type="checkbox" id="cucumber" name="toppingChoice" value="cucumber" onChange={handleOptionChange}></input>
         <label for="cucumber">Cucumber</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="pickles" name="toppingChoice" value="pickles"></input>
+        <input type="checkbox" id="pickles" name="toppingChoice" value="pickles" onChange={handleOptionChange}></input>
         <label for="pickles">Pickles</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="mushrooms" name="toppingChoice" value="mushrooms"></input>
+        <input type="checkbox" id="mushrooms" name="toppingChoice" value="mushrooms" onChange={handleOptionChange}></input>
         <label for="mushrooms">Mushrooms</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="jalapeno" name="toppingChoice" value="jalapeno"></input>
+        <input type="checkbox" id="jalapeno" name="toppingChoice" value="jalapeno" onChange={handleOptionChange}></input>
         <label for="jalapeno">Jalapeno</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="green-olive" name="toppingChoice" value="green-olive"></input>
+        <input type="checkbox" id="green-olive" name="toppingChoice" value="green-olive" onChange={handleOptionChange}></input>
         <label for="green-olive">Green Olive</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="black-olive" name="toppingChoice" value="black-olive"></input>
+        <input type="checkbox" id="black-olive" name="toppingChoice" value="black-olive" onChange={handleOptionChange}></input>
         <label for="black-olive">Black Olive</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="pineapple" name="toppingChoice" value="pineapple"></input>
+        <input type="checkbox" id="pineapple" name="toppingChoice" value="pineapple" onChange={handleOptionChange}></input>
         <label for="pineapple">Pineapple</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="french-fried-onions" name="toppingChoice" value="french-fried-onions"></input>
+        <input type="checkbox" id="french-fried-onions" name="toppingChoice" value="french-fried-onions" onChange={handleOptionChange}></input>
         <label for="french-fried-onions">French Fried Onions</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="spinach" name="toppingChoice" value="spinach"></input>
+        <input type="checkbox" id="spinach" name="toppingChoice" value="spinach" onChange={handleOptionChange}></input>
         <label for="spinach">Spinach</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="salt" name="toppingChoice" value="salt"></input>
+        <input type="checkbox" id="salt" name="toppingChoice" value="salt" onChange={handleOptionChange}></input>
         <label for="salt">Salt</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="pepper" name="toppingChoice" value="pepper"></input>
+        <input type="checkbox" id="pepper" name="toppingChoice" value="pepper" onChange={handleOptionChange}></input>
         <label for="pepper">Pepper</label>
         </div>
     </form>
@@ -235,67 +238,67 @@ const DetailsPage = () => {
     <h3>Choose your sauce:</h3>
     <form class="grid-container">
         <div class="grid-item">
-        <input type="checkbox" id="sub-sauce" name="sauceChoice" value="sub-sauce"></input>
+        <input type="checkbox" id="sub-sauce" name="sauceChoice" value="sub-sauce" onChange={handleOptionChange}></input>
         <label for="sub-sauce">Sub Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="mayonise" name="sauceChoice" value="mayonise"></input>
+        <input type="checkbox" id="mayonise" name="sauceChoice" value="mayonise" onChange={handleOptionChange}></input>
         <label for="mayonise">Mayonnaise</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="mustard" name="sauceChoice" value="mustard"></input>
+        <input type="checkbox" id="mustard" name="sauceChoice" value="mustard" onChange={handleOptionChange}></input>
         <label for="mustard">Mustard</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="honey-mustard" name="sauceChoice" value="honey-mustard"></input>
+        <input type="checkbox" id="honey-mustard" name="sauceChoice" value="honey-mustard" onChange={handleOptionChange}></input>
         <label for="honey-mustard">Honey Mustard</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="hot-sauce" name="sauceChoice" value="hot-sauce"></input>
+        <input type="checkbox" id="hot-sauce" name="sauceChoice" value="hot-sauce" onChange={handleOptionChange}></input>
         <label for="hot-sauce">Hot Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="barbeque-sauce" name="sauceChoice" value="barbeque-sauce"></input>
+        <input type="checkbox" id="barbeque-sauce" name="sauceChoice" value="barbeque-sauce" onChange={handleOptionChange}></input>
         <label for="barbeque-sauce">Barbeque Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="steak-sauce" name="sauceChoice" value="steak-sauce"></input>
+        <input type="checkbox" id="steak-sauce" name="sauceChoice" value="steak-sauce" onChange={handleOptionChange}></input>
         <label for="steak-sauce">Steak Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="ceasar-sauce" name="sauceChoice" value="ceasar-sauce"></input>
+        <input type="checkbox" id="ceasar-sauce" name="sauceChoice" value="ceasar-sauce" onChange={handleOptionChange}></input>
         <label for="ceasar-sauce">Caesar Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="ranch-sauce" name="sauceChoice" value="ranch-sauce"></input>
+        <input type="checkbox" id="ranch-sauce" name="sauceChoice" value="ranch-sauce" onChange={handleOptionChange}></input>
         <label for="ranch-sauce">Ranch Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="chipotle-sauce" name="sauceChoice" value="chipotle-sauce"></input>
+        <input type="checkbox" id="chipotle-sauce" name="sauceChoice" value="chipotle-sauce" onChange={handleOptionChange}></input>
         <label for="chipotle-sauce">Chipotle Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="pizza-sauce" name="sauceChoice" value="pizza-sauce"></input>
+        <input type="checkbox" id="pizza-sauce" name="sauceChoice" value="pizza-sauce" onChange={handleOptionChange}></input>
         <label for="pizza-sauce">Pizza Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="sweet-onion-sauce" name="sauceChoice" value="sweet-onion-sauce"></input>
+        <input type="checkbox" id="sweet-onion-sauce" name="sauceChoice" value="sweet-onion-sauce" onChange={handleOptionChange}></input>
         <label for="sweet-onion-sauce">Sweet Onion Sauce</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="checkbox" id="no-sauce" name="sauceChoice" value="no-sauce"></input>
+        <input type="checkbox" id="no-sauce" name="sauceChoice" value="no-sauce" onChange={handleOptionChange}></input>
         <label for="no-sauce">No Sauce</label>
         </div>
     </form>
@@ -359,19 +362,19 @@ const DetailsPage = () => {
     <h3>Would you like your sub grilled?</h3>
     <form class="grid-container">
         <div class="grid-item">
-        <input type="radio" id="grilled" name="grilledChoice" value="grilled"></input>
+        <input type="radio" id="grilled" name="grilledChoice" value="grilled" onChange={handleOptionChange}></input>
         <label for="grilled">Grilled Sub</label><br></br>
         </div>
 
         <div class="grid-item">
-        <input type="radio" id="not-grilled" name="grilledChoice" value="not-grilled"></input>
+        <input type="radio" id="not-grilled" name="grilledChoice" value="not-grilled" onChange={handleOptionChange}></input>
         <label for="not-grilled">Not Grilled</label>
         </div>
     </form>
 </div> <br></br>
 
 <div class="add-to-cart">
-    <button type="button" onClick={() => addToCart()}>Add to Cart</button>
+    <button type="button" onClick={addToCart}>Add to Cart</button>
 </div> <br></br>
 </div>
 
