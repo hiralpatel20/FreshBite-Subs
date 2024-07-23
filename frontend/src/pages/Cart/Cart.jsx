@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
 const Cart = () => {
-  // Here I added the sample data as of now
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Item 1', price: 10, quantity: 1 },
-    { id: 2, name: 'Item 2', price: 20, quantity: 2 },
-    { id: 3, name: 'Item 3', price: 30, quantity: 1 }
-  ]);
 
-  // Here I added the promocode and discount 
+  // Here I added the promocode and discount
+  const [cartItems, setCartItems] = useState([]); 
   const [promoCode, setPromoCode] = useState('');
   const [discount, setDiscount] = useState(0);
 
@@ -21,6 +16,14 @@ const Cart = () => {
     { promoCode: 'PREM20', discount: 20 },
     { promoCode: 'FREECHIPS', discount: 5 }
   ];
+
+  // Reference: https://www.w3schools.com/react/react_useeffect.asp
+  useEffect(() => {
+    // This is to retrieve the cart items from localStorage, if available, when the component mounts
+    const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    // Here I set the retrieved cart items to the state
+    setCartItems(savedCartItems);
+  }, []);
 
   // Here I added the function to handle the quantity change for a cart item
   const handleQuantityChange = (id, quantity) => {
