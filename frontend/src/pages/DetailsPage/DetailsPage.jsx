@@ -13,6 +13,32 @@ const DetailsPage = () => {
   const { sub } = location.state || {};
 
   const navigate = useNavigate();
+
+  // Here I create state variables for managing the options selected by the user
+  const [subSize, setSubSize] = useState('');
+  const [breadChoice, setBreadChoice] = useState('');
+  const [cheeseChoice, setCheeseChoice] = useState('');
+  const [toppings, setToppings] = useState([]);
+  const [grilled, setGrilled] = useState('');
+
+  // Here I create a fuction to handle change for size, bread, cheese, toppings, and grilled options
+  const handleOptionChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    // This is for if the input type is radio, update the corresponding state variable
+    if (type === 'radio') {
+      if (name === 'subSize') setSubSize(value);
+      else if (name === 'breadChoice') setBreadChoice(value);
+      else if (name === 'cheeseChoice') setCheeseChoice(value);
+      else if (name === 'grilledChoice') setGrilled(value);
+    }
+    // This is for if the input type is checkbox, update the toppings state variable} 
+    else if (type === 'checkbox') {
+      setToppings((prev) =>
+        checked ? [...prev, value] : prev.filter((topping) => topping !== value)
+      );
+    }
+  };
+  
   const addToCart = (sub) => {
     navigate('/cart');
   };
