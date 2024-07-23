@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import './Home.css';
 import Header from '../../components/Header/Header';
 import { assets } from '../../assets/assets'; 
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 // Array of sub sandwiches with details like id, name, category, image, and price
 const subs = [
@@ -134,9 +135,12 @@ const Home = () => {
 
   // Function to add an item to the cart
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
   const addToCart = (sub) => {
     setCart([...cart, sub]);
-    navigate('/details');
+    // Here I pass the date through the state to details page
+    navigate('/details', { state: { sub } });
   };
 
   // Function to handle the category button click
@@ -150,6 +154,7 @@ const Home = () => {
       <Header />
     <div className="menu">
     <h2 className="menu-heading">Explore Our Menu</h2>
+    <h3>Welcome, {user?.username}!</h3>
       {/* Category buttons */}
       <div className="categories">
         <button className={selectedCategory === 'all' ? 'active' : ''} onClick={() => handleCategoryClick('all')}>
