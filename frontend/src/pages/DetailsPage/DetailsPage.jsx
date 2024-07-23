@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DetailsPage.css';
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
+import { useLocation } from 'react-router-dom';
 
 const DetailsPage = () => {
+
+  // Reference: https://medium.com/@alexanie_/https-ocxigin-hashnode-dev-uselocation-hook-in-react-router-758a0a711308
+  // Here I added the useLocation hook to access the current location object
+  const location = useLocation();
+  const { sub } = location.state || {};
 
   const navigate = useNavigate();
   const addToCart = (sub) => {
