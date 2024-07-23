@@ -67,7 +67,8 @@ const Cart = () => {
   // Here I use navigate hook to navigate to the checkout page
   const navigate = useNavigate();
   const handleCheckout = () => {
-    navigate('/Checkout');
+     // Here I pass the data through the state to checkout page
+     navigate('/Checkout', { state: { cartItems } });
   };
 
   return (
@@ -75,24 +76,44 @@ const Cart = () => {
   <Navbar />
     <div className="cart-page">
       <h2>Shopping Cart</h2>
-      <div className="cart-items">
-        {cartItems.map(item => (
-          <div key={item.id} className="cart-item">
-            <div className="item-details">
-              <span>{item.name}</span>
-              <span>${item.price}</span>
-            </div>
-            <div className="item-actions">
-              <input
-                type="number"
-                value={item.quantity}
-                onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-              />
-              <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
-            </div>
-          </div>
-        ))}
-      </div>
+      <table className="cart-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Size</th>
+              <th>Bread</th>
+              <th>Cheese</th>
+              <th>Toppings</th>
+              <th>Grilled</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map(item => (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+                <td>{item.subSize}</td>
+                <td>{item.breadChoice}</td>
+                <td>{item.cheeseChoice}</td>
+                <td>{item.toppings.join(', ')}</td>
+                <td>{item.grilled}</td>
+                <td>
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                  />
+                </td>
+                <td>
+                  <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       <div className="promo-code">
           <input
             type="text"
