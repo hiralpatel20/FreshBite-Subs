@@ -40,6 +40,24 @@ const DetailsPage = () => {
   };
   
   const addToCart = (sub) => {
+    // Here I created the object with the selected options and sub details
+    const cartItem = {
+      id: sub.id,
+      name: sub.name,
+      price: sub.price,
+      quantity: 1,
+      subSize,
+      breadChoice,
+      cheeseChoice,
+      toppings,
+      grilled
+    };
+    // This for retrieve existing cart items from localStorage or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push(cartItem);
+
+    // This is save the updated cart items array back to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
     navigate('/cart');
   };
 
