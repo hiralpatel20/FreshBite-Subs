@@ -113,6 +113,7 @@ const Checkout = ({ cartItems }) => {
           </ul>
         <div className="total">
           <span>Total:</span>
+          <span>${calculateTotal()}</span>
         </div>
       </div>
       <div className="shipping-form">
