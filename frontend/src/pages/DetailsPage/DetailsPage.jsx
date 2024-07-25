@@ -39,7 +39,7 @@ const DetailsPage = () => {
     }
   };
   
-  const addToCart = (sub) => {
+  const addToCart = () => {
     // Here I created the object with the selected options and sub details
     const cartItem = {
       id: sub.id,
