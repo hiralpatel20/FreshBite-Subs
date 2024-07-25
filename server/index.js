@@ -37,8 +37,30 @@ const typeDefs = gql`
     toppings: String
   }
 
+  type Order {
+    id: ID!
+    customerName: String!
+    address: String!
+    city: String!
+    postalCode: String!
+    items: [OrderItem!]!
+  }
+
+  type OrderItem {
+    name: String!
+    price: Float!
+    quantity: Int!
+    toppings: String
+  }
+
+  type Order {
+    id: ID!
+    message: String
+  }
+
   type Query {
     getUserByEmail(email: String!): User
+    getOrders: [Order!]!
   }
 
   type Mutation {
