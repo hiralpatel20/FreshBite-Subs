@@ -104,6 +104,16 @@ const resolvers = {
         throw new Error(`Error retrieving user by email: ${error.message}`);
       }
     },
+    // This resolver is for fetching the orders
+    getOrders: async () => {
+      try {
+        // This below line is to fetch order fromt he database and set to the descending order
+        const orders = await Order.find().sort({ _id: -1 });
+        return orders;
+      } catch (error) {
+        throw new Error(`Error retrieving orders: ${error.message}`);
+      }
+    },
   },
   Mutation: {
     // This resolver is for user signup
