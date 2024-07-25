@@ -105,6 +105,20 @@ const resolvers = {
         throw new Error(`Error logging in: ${error.message}`);
       }
     },
+
+    // This below mutation is for creating the new order 
+    createOrder: async (_, { input }) => {
+      try {
+        // This save order to database based on the input
+        const newOrder = await Order.create(input);
+        return {
+          id: newOrder._id,
+          message: 'Your order has been successfully stored!' // this is the success message 
+        };
+      } catch (error) {
+        throw new Error(`Error creating order: ${error.message}`);
+      }
+    },
   },
 };
 
