@@ -59,10 +59,32 @@ const Checkout = ({ cartItems }) => {
   };
 
   // Here I created the function to handle the form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+   // Below code is to create the order input object with necessary details
+   const orderInput = {
+    customerName: formData.fullName,
+    address: formData.address,
+    city: formData.city,
+    postalCode: formData.postalCode,
+    items: items.map(item => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      toppings: item.toppings.join(', ')
+    }))
   };
+
+  try {
+    // Here I send the order details to the createOrder mutation
+    const { data } = await createOrder({ variables: { input: orderInput } });
+    alert(data.createOrder.message); // This shows success message
+    localStorage.removeItem('cartItems'); 
+    navigate('/user-home'); 
+  } catch (error) {
+    console.error("Error creating order:", error.message);
+  }
+};
   
    // Here I created the function to handle the total
    const calculateTotal = () => {
