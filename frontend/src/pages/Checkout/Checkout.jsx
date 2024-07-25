@@ -3,6 +3,18 @@ import './Checkout.css';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
+import { useMutation, gql } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+
+// Here I define the mutation
+const CREATE_ORDER_MUTATION = gql`
+  mutation CreateOrder($input: OrderInput!) {
+    createOrder(input: $input) {
+      id
+      message
+    }
+  }
+`;
 
 const Checkout = ({ cartItems }) => {
    // Here I get the current location object from React Router
