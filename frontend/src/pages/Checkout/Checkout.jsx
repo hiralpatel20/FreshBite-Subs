@@ -44,6 +44,10 @@ const Checkout = ({ cartItems }) => {
     expiryDate: ''
   });
 
+  // Here I'm using that mutation to create the order
+  const [createOrder] = useMutation(CREATE_ORDER_MUTATION);
+  const navigate = useNavigate();
+  
   // Here I created the function to handle the changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
