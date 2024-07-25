@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const Order = require('./Model/Order');
 
 // Below line is to load environment variables from .env file
 dotenv.config();
@@ -21,6 +22,21 @@ const typeDefs = gql`
     role: String!
   }
 
+  input OrderInput {
+    customerName: String!
+    address: String!
+    city: String!
+    postalCode: String!
+    items: [OrderItemInput!]!
+  }
+
+  input OrderItemInput {
+    name: String!
+    price: Float!
+    quantity: Int!
+    toppings: String
+  }
+
   type Query {
     getUserByEmail(email: String!): User
   }
@@ -28,6 +44,7 @@ const typeDefs = gql`
   type Mutation {
     signup(username: String!, email: String!, password: String!, role: String!): User
     login(email: String!, password: String!): User
+    createOrder(input: OrderInput!): Order
   }
 `;
 
