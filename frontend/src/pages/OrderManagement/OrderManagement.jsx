@@ -24,6 +24,18 @@ const GET_ORDERS = gql`
 `;
 
 const OrderManagement = () => {
+  // Here i used apollo client's useQuery hook to fetch the orders
+  const { loading, error, data } = useQuery(GET_ORDERS);
+
+  // Here I initialized the state to hold the orders
+  const [orders, setOrders] = useState([]);
+
+  // This is the effect hook to update state when data is changed
+  useEffect(() => {
+    if (data && data.getOrders) {
+      setOrders(data.getOrders);
+    }
+  }, [data]); 
 
   // Here is the function to handle order status change
   const handleStatusChange = (id, status) => {
@@ -31,6 +43,11 @@ const OrderManagement = () => {
       orders.map((order) => (order.id === id ? { ...order, status } : order))
     );
   };
+
+  // This condition is to load the message while data is being fetched
+  if (loading) return <p>Loading...</p>;
+  // This condition is for display error message if there is an error
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     // This the basic design for the order management
@@ -45,21 +62,25 @@ const OrderManagement = () => {
             <thead>
               <tr>
                 <th>Order ID</th>
-                <th>Status</th>
-                <th>Total</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Postal Code</th>
                 <th>Items</th>
                 <th>Change Status</th>
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+            {orders.map((order) => (
                 <tr key={order.id}>
                   <td>{order.id}</td>
-                  <td>{order.status}</td>
-                  <td>${order.total.toFixed(2)}</td>
+                  <td>{order.customerName}</td>
+                  <td>{order.address}</td>
+                  <td>{order.city}</td>
+                  <td>{order.postalCode}</td>
                   <td>
-                    {order.items.map((item) => (
-                      <div key={item.id}>
+                    {order.items.map((item, index) => (
+                      <div key={index}>
                         {item.name} x {item.quantity}
                       </div>
                     ))}
