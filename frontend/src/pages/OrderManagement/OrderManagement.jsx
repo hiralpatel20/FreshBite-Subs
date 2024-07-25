@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavbarAdmin from '../../components/NavbarAdmin/NavbarAdmin';
 import Footer from '../../components/Footer/Footer';
 import './OrderManagement.css';
+import { useQuery, gql } from '@apollo/client';
+
+// This is the graphQL schema to get orders
+const GET_ORDERS = gql`
+  query GetOrders {
+    getOrders {
+      id
+      customerName
+      address
+      city
+      postalCode
+      items {
+        name
+        price
+        quantity
+        toppings
+      }
+    }
+  }
+`;
 
 const OrderManagement = () => {
-  // Here I added the sample data as of now
-  const [orders, setOrders] = useState([
-    {
-      id: 1,
-      status: 'Pending',
-      total: 25.99,
-      items: [
-        { id: 1, name: 'VEGGIE AND CHEESE', quantity: 1 },
-        { id: 2, name: 'ASSORTED SUB', quantity: 2 },
-      ],
-    },
-    {
-      id: 2,
-      status: 'Processing',
-      total: 15.99,
-      items: [
-        { id: 3, name: 'HAM SUB', quantity: 1 },
-        { id: 4, name: 'LOUISIANA PEPPER CHICKEN', quantity: 1 },
-      ],
-    },
-  ]);
 
   // Here is the function to handle order status change
   const handleStatusChange = (id, status) => {
