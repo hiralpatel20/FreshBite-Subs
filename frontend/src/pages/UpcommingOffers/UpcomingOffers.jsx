@@ -33,7 +33,14 @@ const UpcomingOffers = () => {
     },
   ]);
 
-  // Here I creatyed the function to handle publish button
+    // Here I initialized state for a new offer with default values
+    const [newOffer, setNewOffer] = useState({
+      title: '',
+      description: '',
+      isPublished: false,
+    });
+
+  // Here I created the function to handle publish button
   const handlePublish = (id) => {
     setOffers(
       offers.map((offer) => (offer.id === id ? { ...offer, isPublished: !offer.isPublished } : offer))
