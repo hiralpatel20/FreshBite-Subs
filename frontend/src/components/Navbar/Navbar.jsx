@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
-import {Routes, NavLink, Route, useNavigate} from "react-router-dom";
+import { NavLink,  useNavigate} from "react-router-dom";
 
 const Navbar = () => {
   
@@ -31,6 +31,7 @@ const Navbar = () => {
             <NavLink className="nav-item" to="/about"><a>About Us</a></NavLink>
             <NavLink className="nav-item" to="/contact"><a>Contact</a></NavLink>
             <NavLink className="nav-item" to="/cart"><a>Cart</a></NavLink>
+            <NavLink className="nav-item" to="/order-tracking"><a>Order Tracking</a></NavLink>
             <a className="nav-item" onClick={handleLogout} style={{ cursor: 'pointer' }}><a>Logout</a></a>
           </nav>
          </div>
