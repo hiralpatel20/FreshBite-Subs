@@ -142,6 +142,7 @@ const AdminHome = () => {
   const [productCategory, setProductCategory] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productImage, setProductImage] = useState('');
+  const [addProduct] = useMutation(ADD_PRODUCT);
 
   // Below code is the useEffect to set initialProducts as the initial state for products
   useEffect(() => {
@@ -149,20 +150,25 @@ const AdminHome = () => {
   }, []);
 
   // Below function is to handle the new product
-  const handleAddProduct = () => {
+  const handleAddProduct = async () => {
     const newProduct = {
-      id: products.length + 1,
       name: productName,
       category: productCategory,
       image: productImage,
       price: parseFloat(productPrice),
     };
-    setProducts([...products, newProduct]);  // This line is for adding new product to products array
-    // Below code is to reset input fields after adding product 
-    setProductName('');
-    setProductCategory('');
-    setProductPrice('');
-    setProductImage('');
+    try {
+      // Here I call the addProduct function, passing the newProduct object as input
+      const { data } = await addProduct({ variables: { input: newProduct } });
+      setProducts([...products, data.createProduct]); // This line is for adding new product to products array
+      // Below code is to reset input fields after adding product 
+      setProductName('');
+      setProductCategory('');
+      setProductPrice('');
+      setProductImage('');
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
   };
 
   return (
