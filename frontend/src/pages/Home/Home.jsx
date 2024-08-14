@@ -147,6 +147,9 @@ const Home = () => {
   const [cart, setCart] = useState([]); // State variable to manage the items in the cart
   const [selectedCategory, setSelectedCategory] = useState('all'); // State variable to manage the selected category
 
+  // Here I import the useQuery hook from Apollo Client to fetch data
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
   // Function to add an item to the cart
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -161,6 +164,11 @@ const Home = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const products = data.products;
 
   return (
     <div>
