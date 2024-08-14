@@ -56,6 +56,20 @@ const UpcomingOffers = () => {
     setNewOffer({ ...newOffer, [name]: value });
   };
 
+
+  // Here I created function to add new offer
+  const handleAddOffer = () => {
+    setOffers([
+      ...offers,
+      { 
+        ...newOffer, 
+        id: offers.length + 1 
+      }
+    ]);
+    setShowForm(false); // This hides the form after adding the data
+
+  };
+
   return (
     <>
     {/* Here I created simple design for this page */}
