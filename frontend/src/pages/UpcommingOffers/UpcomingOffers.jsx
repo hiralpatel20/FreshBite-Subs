@@ -82,6 +82,40 @@ const UpcomingOffers = () => {
       <NavbarAdmin />
       <div className="admin-container">
         <h2>Upcoming Offers</h2>
+        <button onClick={() => setShowForm(!showForm)}>+ Add New Offer</button>
+        {showForm && (
+          <div className="offer-form">
+            <input
+              type="text"
+              name="title"
+              placeholder="Offer Title"
+              value={newOffer.title}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
+              value={newOffer.description}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="promoCode"
+              placeholder="Promo Code"
+              value={newOffer.promoCode}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="discount"
+              placeholder="Discount"
+              value={newOffer.discount}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleAddOffer}>Add Offer</button>
+          </div>
+        )}
         <div className="offers-list">
           {offers.map((offer) => (
             <div key={offer.id} className="offer-card">
