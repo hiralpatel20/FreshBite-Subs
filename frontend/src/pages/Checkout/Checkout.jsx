@@ -27,6 +27,7 @@ const GET_USER_QUERY = gql`
 `;
 
 const Checkout = ({ cartItems }) => {
+   const { user } = useContext(AuthContext);
    // Here I get the current location object from React Router
    const location = useLocation();
 
@@ -52,6 +53,13 @@ const Checkout = ({ cartItems }) => {
     cardholderName: '',
     cvv: '',
     expiryDate: ''
+  });
+
+  // Here I retrive the email address
+  const userEmail = user?.email;
+
+  const { data: userData, loading: userLoading, error: userError } = useQuery(GET_USER_QUERY, {
+    variables: { email: userEmail }, // here i pass the user's email as a variable to query
   });
 
   // Here I'm using that mutation to create the order
