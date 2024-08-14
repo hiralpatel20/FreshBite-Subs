@@ -160,6 +160,10 @@ const resolvers = {
     // This resolver is for user signup
     signup: async (_, { username, email, password, role }) => {
       try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+          throw new Error('User already exists with this email');
+        }
         const newUser = await User.create({ username, email, password, role });
         return newUser;
       } catch (error) {
@@ -183,10 +187,14 @@ const resolvers = {
     createOrder: async (_, { input }) => {
       try {
         // This save order to database based on the input
-        const newOrder = await Order.create(input);
+        const newOrder = new Order({
+          ...input,
+          status: 'Pending',
+        });
+        await newOrder.save();
         return {
-          id: newOrder._id,
-          message: 'Your order has been successfully stored!' // this is the success message 
+          id: newOrder.id,
+          message: 'Order created successfully',
         };
       } catch (error) {
         throw new Error(`Error creating order: ${error.message}`);
