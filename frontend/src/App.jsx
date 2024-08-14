@@ -13,6 +13,7 @@ import AboutUs from './pages/AboutUs/AboutUs'
 import AdminHome from './pages/AdminHomePage/AdminHome'
 import UpcomingOffers from './pages/UpcommingOffers/UpcomingOffers'
 import OrderManagement from './pages/OrderManagement/OrderManagement'
+import OrderTracking from './pages/Order Tracking/OrderTracking'
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/admin-home" element={<AdminHome/>}></Route>
             <Route path="/upcoming-offers" element={<UpcomingOffers/>}></Route>
             <Route path="/order-management" element={<OrderManagement/>}></Route>
+            <Route path="/order-tracking" element={<OrderTracking />}></Route>
       </Routes>
 
     </div>
