@@ -37,30 +37,8 @@ const typeDefs = gql`
     toppings: String
   }
 
-  type Order {
-    id: ID!
-    customerName: String!
-    address: String!
-    city: String!
-    postalCode: String!
-    items: [OrderItem!]!
-  }
-
-  type OrderItem {
-    name: String!
-    price: Float!
-    quantity: Int!
-    toppings: String
-  }
-
-  type Order {
-    id: ID!
-    message: String
-  }
-
   type Query {
     getUserByEmail(email: String!): User
-    getOrders: [Order!]!
   }
 
   type Mutation {
@@ -102,16 +80,6 @@ const resolvers = {
         return user;
       } catch (error) {
         throw new Error(`Error retrieving user by email: ${error.message}`);
-      }
-    },
-    // This resolver is for fetching the orders
-    getOrders: async () => {
-      try {
-        // This below line is to fetch order fromt he database and set to the descending order
-        const orders = await Order.find().sort({ _id: -1 });
-        return orders;
-      } catch (error) {
-        throw new Error(`Error retrieving orders: ${error.message}`);
       }
     },
   },
