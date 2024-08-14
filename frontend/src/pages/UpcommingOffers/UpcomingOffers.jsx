@@ -50,6 +50,12 @@ const UpcomingOffers = () => {
     );
   };
 
+  //Here I initialized the functon to hande change in the form
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewOffer({ ...newOffer, [name]: value });
+  };
+
   return (
     <>
     {/* Here I created simple design for this page */}
