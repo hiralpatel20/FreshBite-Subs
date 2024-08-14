@@ -247,6 +247,49 @@ const Home = () => {
               <button className="button" onClick={() => addToCart(sub)}>Add to Cart</button>
             </div>
           ))}
+          {products
+            .filter((product) => selectedCategory === 'all' || product.category === selectedCategory)
+            .map((product) => (
+              <div className="menu-item" key={product.id}>
+                <img src={product.image} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p>Price: ${product.price.toFixed(2)}</p>
+                <div className="quantity">
+                  <button
+                    onClick={() => {
+                      setCart((prevCart) => {
+                        const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
+                        if (existingItemIndex !== -1 && prevCart[existingItemIndex].quantity > 1) {
+                          const updatedCart = [...prevCart];
+                          updatedCart[existingItemIndex].quantity -= 1;
+                          return updatedCart;
+                        }
+                        return prevCart;
+                      });
+                    }}
+                  >
+                    -
+                  </button>
+                  <span>Quantity: {cart.find((item) => item.id === product.id)?.quantity || 0}</span>
+                  <button
+                    onClick={() => {
+                      setCart((prevCart) => {
+                        const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
+                        if (existingItemIndex !== -1) {
+                          const updatedCart = [...prevCart];
+                          updatedCart[existingItemIndex].quantity += 1;
+                          return updatedCart;
+                        }
+                        return [...prevCart, { ...product, quantity: 1 }];
+                      });
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+                <button className="button" onClick={() => addToCart(product)}>Add to Cart</button>
+              </div>
+            ))}
       </div>
     </div>
     <Footer />
