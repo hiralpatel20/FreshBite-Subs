@@ -15,7 +15,10 @@ const Cart = () => {
     { promoCode: 'BOGO', discount: 50, isPublished: true },
     { promoCode: 'PREM20', discount: 20, isPublished: true },
     { promoCode: 'FREECHIPS', discount: 5, isPublished: true },
-    { promoCode: 'ORDER10', discount: 10, isPublished: true }
+    { promoCode: 'ORDER10', discount: 10, isPublished: true },
+    { promoCode: 'ORDER10', discount: 10, isPublished: true },
+    { promoCode: 'ORDER15', discount: 15, isPublished: true },
+    { promoCode: 'ORDER25', discount: 25, isPublished: true }
   ];
 
   // Reference: https://www.w3schools.com/react/react_useeffect.asp
@@ -55,7 +58,7 @@ const Cart = () => {
 
   // Here I added the function to handle the promocode
   const handleApplyPromoCode = () => {
-    const offer = offers.find(offer => offer.promoCode === promoCode);
+    const offer = offers.find(offer => offer.promoCode === promoCode && offer.isPublished);
     if (offer) {
       setDiscount(offer.discount);
     } else {
