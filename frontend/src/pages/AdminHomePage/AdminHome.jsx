@@ -183,7 +183,7 @@ const AdminHome = () => {
 
         <section className="add-product-section">
           <h2>Add a New Product</h2>
-          <form className="product-form">
+          <form className="product-form" onSubmit={(e) => { e.preventDefault(); handleAddProduct(); }}>
             <label>
               Product Name:
               <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} required />
