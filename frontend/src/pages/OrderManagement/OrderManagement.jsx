@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavbarAdmin from '../../components/NavbarAdmin/NavbarAdmin';
 import Footer from '../../components/Footer/Footer';
 import './OrderManagement.css';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 
 // This is the graphQL schema to get orders
 const GET_ORDERS = gql`
@@ -19,6 +19,16 @@ const GET_ORDERS = gql`
         quantity
         toppings
       }
+    }
+  }
+`;
+
+// Here I added the mutation to update the status
+const UPDATE_ORDER_STATUS = gql`
+  mutation UpdateOrderStatus($id: ID!, $status: String!) {
+    updateOrderStatus(id: $id, status: $status) {
+      id
+      status
     }
   }
 `;
