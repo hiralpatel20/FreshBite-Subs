@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const Order = require('./Model/Order');
+const Product = require('./Model/Product');
 
 // Below line is to load environment variables from .env file
 dotenv.config();
@@ -37,14 +38,56 @@ const typeDefs = gql`
     toppings: String
   }
 
+  type Order {
+    id: ID!
+    customerName: String!
+    address: String!
+    city: String!
+    postalCode: String!
+    items: [OrderItem!]!
+    status: String!
+  }
+
+  type OrderItem {
+    name: String!
+    price: Float!
+    quantity: Int!
+    toppings: String
+  }
+
+  type Order {
+    id: ID!
+    message: String
+  }
+
+  type Product {
+  id: ID!
+  name: String!
+  category: String!
+  image: String!
+  price: Float!
+}
+
+input ProductInput {
+  name: String!
+  category: String!
+  image: String!
+  price: Float!
+}
+
   type Query {
     getUserByEmail(email: String!): User
+    getOrders: [Order!]!
+    getOrdersByUser(customerName: String!): [Order!]!
+    products: [Product!]
   }
 
   type Mutation {
     signup(username: String!, email: String!, password: String!, role: String!): User
     login(email: String!, password: String!): User
     createOrder(input: OrderInput!): Order
+    updateOrderStatus(id: ID!, status: String!): Order
+    createProduct(input: ProductInput!): Product
   }
 `;
 
@@ -82,6 +125,36 @@ const resolvers = {
         throw new Error(`Error retrieving user by email: ${error.message}`);
       }
     },
+    // This resolver is for fetching the orders
+    getOrders: async () => {
+      try {
+        // This below line is to fetch order fromt he database and set to the descending order
+        const orders = await Order.find().sort({ _id: -1 });
+        return orders;
+      } catch (error) {
+        throw new Error(`Error retrieving orders: ${error.message}`);
+      }
+    },
+    // This is the function to get orders by customer name
+    getOrdersByUser: async (_, { customerName }) => {
+      try {
+        // Here I fetch the order from the databse 
+        const orders = await Order.find({ customerName }).sort({ _id: -1 });
+        return orders;
+      } catch (error) {
+        throw new Error(`Error retrieving orders for user: ${error.message}`);
+      }
+    },
+    // This function is to fetch all the products from the databse
+    products: async () => {
+      try {
+        // Here I fetch the all the products from the databse
+        const products = await Product.find();
+        return products;
+      } catch (error) {
+        throw new Error(`Error retrieving products: ${error.message}`);
+      }
+    },
   },
   Mutation: {
     // This resolver is for user signup
@@ -117,6 +190,34 @@ const resolvers = {
         };
       } catch (error) {
         throw new Error(`Error creating order: ${error.message}`);
+      }
+    },
+    // This below mutation is for upadting the status
+    updateOrderStatus: async (_, { id, status }) => {
+      try {
+        // Below line is to fins the id and then update the status
+        const order = await Order.findByIdAndUpdate(id, { status }, { new: true });
+        return order;
+      } catch (error) {
+        throw new Error(`Error updating order status: ${error.message}`);
+      }
+    },
+    // This beow mutaion is to create the product
+    createProduct: async (_, { input }) => {
+      try {
+        // this line retrieves the last product ID and increment by 1 or start from 17
+        const lastProduct = await Product.findOne().sort({ id: -1 });
+        const newProductId = lastProduct ? lastProduct.id + 1 : 17;
+
+        // Here below code is create and save the product into databse
+        const newProduct = await Product.create({
+          id: newProductId,
+          ...input,
+        });
+
+        return newProduct;
+      } catch (error) {
+        throw new Error(`Error creating product: ${error.message}`);
       }
     },
   },
