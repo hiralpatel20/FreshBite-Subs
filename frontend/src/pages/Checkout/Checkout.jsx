@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Checkout.css';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 // Here I define the mutation
 const CREATE_ORDER_MUTATION = gql`
@@ -12,6 +13,15 @@ const CREATE_ORDER_MUTATION = gql`
     createOrder(input: $input) {
       id
       message
+    }
+  }
+`;
+
+// Here I define the mutation for getting the user by email
+const GET_USER_QUERY = gql`
+  query GetUserByEmail($email: String!) {
+    getUserByEmail(email: $email) {
+      username
     }
   }
 `;
