@@ -40,6 +40,9 @@ const UpcomingOffers = () => {
       isPublished: false,
     });
 
+  // Here I initialized the state to show visibility of the form
+    const [showForm, setShowForm] = useState(false);
+
   // Here I created the function to handle publish button
   const handlePublish = (id) => {
     setOffers(
