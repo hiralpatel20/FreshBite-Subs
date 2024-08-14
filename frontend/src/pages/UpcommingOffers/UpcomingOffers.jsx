@@ -67,7 +67,13 @@ const UpcomingOffers = () => {
       }
     ]);
     setShowForm(false); // This hides the form after adding the data
-
+    setNewOffer({
+      title: '',
+      description: '',
+      promoCode: '',
+      discount: '',
+      isPublished: false,
+    });
   };
 
   return (
