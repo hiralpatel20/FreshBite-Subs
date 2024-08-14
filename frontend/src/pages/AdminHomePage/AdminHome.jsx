@@ -3,6 +3,20 @@ import './AdminHome.css';
 import { assets } from '../../assets/assets'; 
 import Footer from '../../components/Footer/Footer';
 import NavbarAdmin from '../../components/NavbarAdmin/NavbarAdmin';
+import { useMutation, gql } from '@apollo/client';
+
+// Below I added the mutation for adding the new product
+const ADD_PRODUCT = gql`
+  mutation AddProduct($input: ProductInput!) {
+    createProduct(input: $input) {
+      id
+      name
+      category
+      image
+      price
+    }
+  }
+`;
 
 // Array of products with details like id, name, category, image, and price this is same as user home page
 // And for reference I already mentioned in Home.jsx file
