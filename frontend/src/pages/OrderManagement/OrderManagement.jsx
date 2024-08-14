@@ -19,6 +19,7 @@ const GET_ORDERS = gql`
         quantity
         toppings
       }
+      status
     }
   }
 `;
