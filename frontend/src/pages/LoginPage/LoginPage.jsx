@@ -1,8 +1,9 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
 import './LoginPage.css';
 import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
+import { AuthContext } from '../../context/AuthContext';
 
 // Below is the GraphQL mutation to login a user
 // Refernce: https://graphql.org/learn/queries/
@@ -22,20 +23,26 @@ const LoginPage = () => {
   // This is the state hooks for managing email and password inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(null);
   const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   // Below finction is to handle login form submission
   const handleLogin = async (e) => {
     e.preventDefault(); // This is for preventing default form submission
     try {
       // Below code is the execute loginUser mutation with email and password variables
+      const role = document.getElementById('role').value; // Get the role value
       const { data } = await loginUser({
         variables: {
           email,
           password,
+          role,
         },
       });
+
+      setUser(data.login);
 
       // Below code is to redirect based on user role
       if (data.login.role === 'user') {
@@ -45,6 +52,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error('Login failed:', error);
+      setLoginError('Login failed. Please check your credentials.'); 
     }
   };
 
@@ -73,6 +81,7 @@ const LoginPage = () => {
             </select>
           </div>
           <button type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
+          {loginError && <p className="login-error">{loginError}</p>}
         </form>
         <p className="signup-link">Don't have an account? <Link to="/signup">Sign Up</Link></p>
       </div>
