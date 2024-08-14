@@ -37,6 +37,9 @@ const OrderManagement = () => {
   // Here i used apollo client's useQuery hook to fetch the orders
   const { loading, error, data } = useQuery(GET_ORDERS);
 
+  // Below code 'updateOrderStatus' is called, it will trigger the UPDATE_ORDER_STATUS mutation on the server
+  const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
+
   // Here I initialized the state to hold the orders
   const [orders, setOrders] = useState([]);
 
@@ -48,10 +51,17 @@ const OrderManagement = () => {
   }, [data]); 
 
   // Here is the function to handle order status change
-  const handleStatusChange = (id, status) => {
-    setOrders(
-      orders.map((order) => (order.id === id ? { ...order, status } : order))
-    );
+  const handleStatusChange = async (id, status) => {
+    try {
+      // Here I call the updateOrderStatus mutation with id and status
+      await updateOrderStatus({ variables: { id, status } });
+      // Here I update the local state to reflect the changed status
+      setOrders(
+        orders.map((order) => (order.id === id ? { ...order, status } : order))
+      );
+    } catch (error) {
+      console.error("Error updating order status:", error.message);
+    }
   };
 
   // This condition is to load the message while data is being fetched
