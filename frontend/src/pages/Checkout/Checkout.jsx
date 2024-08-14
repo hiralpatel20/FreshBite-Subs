@@ -65,6 +65,18 @@ const Checkout = ({ cartItems }) => {
   // Here I'm using that mutation to create the order
   const [createOrder] = useMutation(CREATE_ORDER_MUTATION);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Here I check if user is available 
+    if (userData) {
+      // Below code is to if userData exists, update the form data state
+      setFormData(prevState => ({
+        ...prevState,
+        // here I update the fullname field with username from userdata
+        fullName: userData.getUserByEmail.username
+      }));
+    }
+  }, [userData]);
   
   // Here I created the function to handle the changes in form inputs
   const handleChange = (e) => {
