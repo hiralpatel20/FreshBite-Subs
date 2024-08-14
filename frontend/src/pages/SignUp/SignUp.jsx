@@ -1,8 +1,9 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
 import './SignUp.css';
 import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
+import { AuthContext } from '../../context/AuthContext';
 
 // Below is the GraphQL mutation to signup a user
 // Reference: https://graphql.org/learn/queries/
@@ -26,6 +27,8 @@ const SignupPage = () => {
   const [role, setRole] = useState('user');
   const [signupUser, { loading, error }] = useMutation(SIGNUP_USER);
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
+  const [signupError, setSignupError] = useState(null);
 
   // Below is the function to handle the form submission
   const handleSignup = async (e) => {
@@ -46,7 +49,7 @@ const SignupPage = () => {
         navigate('/');
       }
     } catch (error) {
-      console.error('Signup failed:', error);
+      setSignupError('An account already exists with this email.');
     }
   };
 
@@ -81,6 +84,7 @@ const SignupPage = () => {
             </select>
           </div>
           <button type="submit" disabled={loading}>{loading ? 'Signing up...' : 'Sign Up'}</button>
+          {signupError && <p className="signup-error">{signupError}</p>}
         </form>
         <p className="login-link">Already have an account? <Link to="/">Login</Link></p>
       </div>
