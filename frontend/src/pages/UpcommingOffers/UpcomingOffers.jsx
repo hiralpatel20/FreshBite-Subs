@@ -37,6 +37,8 @@ const UpcomingOffers = () => {
     const [newOffer, setNewOffer] = useState({
       title: '',
       description: '',
+      promoCode: '',
+      discount: '',
       isPublished: false,
     });
 
