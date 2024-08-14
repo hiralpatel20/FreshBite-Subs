@@ -12,9 +12,10 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
 
   const offers = [
-    { promoCode: 'BOGO', discount: 50 },
-    { promoCode: 'PREM20', discount: 20 },
-    { promoCode: 'FREECHIPS', discount: 5 }
+    { promoCode: 'BOGO', discount: 50, isPublished: true },
+    { promoCode: 'PREM20', discount: 20, isPublished: true },
+    { promoCode: 'FREECHIPS', discount: 5, isPublished: true },
+    { promoCode: 'ORDER10', discount: 10, isPublished: true }
   ];
 
   // Reference: https://www.w3schools.com/react/react_useeffect.asp
