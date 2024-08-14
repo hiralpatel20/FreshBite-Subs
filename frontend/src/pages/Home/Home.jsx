@@ -6,6 +6,20 @@ import { assets } from '../../assets/assets';
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { useQuery, gql } from '@apollo/client';
+
+// Here I added the query to get the product from the database
+const GET_PRODUCTS = gql`
+  query GetProducts {
+    products {
+      id
+      name
+      category
+      image
+      price
+    }
+  }
+`;
 
 // Array of sub sandwiches with details like id, name, category, image, and price
 const subs = [
