@@ -33,11 +33,49 @@ const UpcomingOffers = () => {
     },
   ]);
 
-  // Here I creatyed the function to handle publish button
+    // Here I initialized state for a new offer with default values
+    const [newOffer, setNewOffer] = useState({
+      title: '',
+      description: '',
+      promoCode: '',
+      discount: '',
+      isPublished: false,
+    });
+
+  // Here I initialized the state to show visibility of the form
+    const [showForm, setShowForm] = useState(false);
+
+  // Here I created the function to handle publish button
   const handlePublish = (id) => {
     setOffers(
       offers.map((offer) => (offer.id === id ? { ...offer, isPublished: !offer.isPublished } : offer))
     );
+  };
+
+  //Here I initialized the functon to hande change in the form
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewOffer({ ...newOffer, [name]: value });
+  };
+
+
+  // Here I created function to add new offer
+  const handleAddOffer = () => {
+    setOffers([
+      ...offers,
+      { 
+        ...newOffer, 
+        id: offers.length + 1 
+      }
+    ]);
+    setShowForm(false); // This hides the form after adding the data
+    setNewOffer({
+      title: '',
+      description: '',
+      promoCode: '',
+      discount: '',
+      isPublished: false,
+    });
   };
 
   return (
@@ -46,6 +84,40 @@ const UpcomingOffers = () => {
       <NavbarAdmin />
       <div className="admin-container">
         <h2>Upcoming Offers</h2>
+        <button onClick={() => setShowForm(!showForm)}>+ Add New Offer</button>
+        {showForm && (
+          <div className="offer-form">
+            <input
+              type="text"
+              name="title"
+              placeholder="Offer Title"
+              value={newOffer.title}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
+              value={newOffer.description}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="promoCode"
+              placeholder="Promo Code"
+              value={newOffer.promoCode}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="discount"
+              placeholder="Discount"
+              value={newOffer.discount}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleAddOffer}>Add Offer</button>
+          </div>
+        )}
         <div className="offers-list">
           {offers.map((offer) => (
             <div key={offer.id} className="offer-card">
