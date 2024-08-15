@@ -1,4 +1,7 @@
 /* Here I added Css for about us page */
+*{
+  font-family: Georgia;
+}
 .about-us-container {
     padding: 20px;
     max-width: 1200px;
