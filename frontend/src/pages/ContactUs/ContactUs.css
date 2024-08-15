@@ -1,4 +1,8 @@
 /* Here I added Css for contact us page */
+*{
+  font-family: georgia;
+}
+
 .contact-us-container {
     padding: 20px;
     max-width: 1200px;
