@@ -1,4 +1,7 @@
 /* Here I added some basic CSS for detailed page */
+*{
+  font-family: georgia;
+}
 .details-page {
     padding: 20px;
     max-width: 800px;
@@ -73,7 +76,6 @@
 
   .add-to-cart {
     display: flex;
-    justify-content: center;
     margin-top: 20px;
     
   }
@@ -87,7 +89,7 @@
     cursor: pointer;
     font-size: 20px;
     font-variant: petite-caps;
-    font-weight: 700;
+    font-weight: 100;
   }
   
   .add-to-cart button:hover {
