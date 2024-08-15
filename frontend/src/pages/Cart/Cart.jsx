@@ -112,7 +112,7 @@ const Cart = () => {
                   />
                 </td>
                 <td>
-                  <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+                  <button className="rmv-button" onClick={() => handleRemoveItem(item.id)}>Remove</button>
                 </td>
               </tr>
             ))}
@@ -125,7 +125,7 @@ const Cart = () => {
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value)}
           />
-          <button onClick={handleApplyPromoCode}>Apply</button>
+          <button className="abtn-cart"  onClick={handleApplyPromoCode}>Apply</button>
         </div>
       <div className="cart-total">
         <h3>Total: ${calculateTotal()}</h3>
