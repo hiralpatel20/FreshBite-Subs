@@ -11,7 +11,8 @@ const orderSchema = new mongoose.Schema({
     price: Number,
     quantity: Number,
     toppings: String
-  }]
+  }],
+  status: { type: String, default: 'Pending' }
 });
 
 // Here I created the order from the schema to interact with the orders collection
