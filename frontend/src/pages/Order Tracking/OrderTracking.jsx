@@ -18,7 +18,6 @@ const GET_ORDERS_BY_USER = gql`
         name
         price
         quantity
-        toppings
       }
       status
     }
