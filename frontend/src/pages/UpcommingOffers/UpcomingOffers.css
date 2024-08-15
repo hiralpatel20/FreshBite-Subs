@@ -1,4 +1,8 @@
 /* Here I added Css for upcoming offers page */
+*{
+  font-family: georgia;
+}
+
 .admin-container {
     padding: 20px;
   }
@@ -24,7 +28,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     transition: transform 0.2s;
   }
   
@@ -65,7 +69,7 @@
     flex-direction: column;
     gap: 15px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -91,4 +95,12 @@
   
   .offer-form button:hover {
     background-color: #0056b3;
+  }
+
+  button{
+    width: 30%;
+    transform: translate(-50%);
+    margin-left: 50%;
+    font-variant: small-caps;
+    margin-bottom: 2%;
   }
