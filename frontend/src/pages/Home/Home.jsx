@@ -212,7 +212,7 @@ const Home = () => {
               <h3>{sub.name}</h3>
               <p>Price: ${sub.price.toFixed(2)}</p>
               <div className="quantity">
-                <button
+                <button  className="qbutton"
                   onClick={() => {
                     setCart((prevCart) => {
                       const existingItemIndex = prevCart.findIndex((item) => item.id === sub.id);
@@ -228,7 +228,7 @@ const Home = () => {
                   -
                 </button>
                 <span>Quantity: {cart.find((item) => item.id === sub.id)?.quantity || 0}</span>
-                <button
+                <button  className="qbutton"
                   onClick={() => {
                     setCart((prevCart) => {
                       const existingItemIndex = prevCart.findIndex((item) => item.id === sub.id);
@@ -244,7 +244,7 @@ const Home = () => {
                   +
                 </button>
               </div>
-              <button className="button" onClick={() => addToCart(sub)}>Add to Cart</button>
+              <button className="atc-button"  onClick={() => addToCart(sub)}>Add to Cart</button>
             </div>
           ))}
           {products
@@ -255,7 +255,7 @@ const Home = () => {
                 <h3>{product.name}</h3>
                 <p>Price: ${product.price.toFixed(2)}</p>
                 <div className="quantity">
-                  <button
+                  <button  className="qbutton"
                     onClick={() => {
                       setCart((prevCart) => {
                         const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
@@ -271,7 +271,7 @@ const Home = () => {
                     -
                   </button>
                   <span>Quantity: {cart.find((item) => item.id === product.id)?.quantity || 0}</span>
-                  <button
+                  <button  className="qbutton"
                     onClick={() => {
                       setCart((prevCart) => {
                         const existingItemIndex = prevCart.findIndex((item) => item.id === product.id);
@@ -287,7 +287,7 @@ const Home = () => {
                     +
                   </button>
                 </div>
-                <button className="button" onClick={() => addToCart(product)}>Add to Cart</button>
+                <button className="atc-button"  onClick={() => addToCart(product)}>Add to Cart</button>
               </div>
             ))}
       </div>

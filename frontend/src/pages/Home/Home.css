@@ -1,9 +1,10 @@
 /* Here I added some basic CSS for home page */
 .menu {
+  margin-top: 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #dddddd;
+    
   }
 
   h2 {
@@ -33,8 +34,8 @@
     margin: 0 15px; 
     cursor: pointer;
     font-size: 20px;
-    font-variant: petite-caps;
-    font-weight: 700;
+    font-variant: small-caps;
+    font-weight: 100;
     transition: background-color 0.3s ease-in-out;
   }
   
@@ -78,9 +79,11 @@
   }
   
   .menu-item h3 {
-    margin: 0;
+    margin: 3%;
     font-size: 18px;
     color: #333;
+    font-variant: small-caps;
+    text-align: center;
   }
   
   .menu-item p {
@@ -91,19 +94,20 @@
   
   .quantity {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
   }
   
-  .quantity button {
+  .quantity .qbutton {
     background-color: #7f8b98;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    margin:  10px;
+    margin: 3%;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+    width: fit-content;
   }
   
   .quantity button:hover {
@@ -121,6 +125,18 @@
     font-weight: 700;
   }
 
+  .atc-button{
+    border: 10px;
+    border-radius: 5px;
+    /* height: 40px; */
+    color: white;
+    background-color: black;
+    font-size: 20px;
+    font-variant: small-caps;
+    font-weight: 100;
+    padding: 2%;
+    width: 90%;
+}
   /* Here I added media queries for responsiveness */
 @media screen and (max-width: 1200px) {
     .subs {
