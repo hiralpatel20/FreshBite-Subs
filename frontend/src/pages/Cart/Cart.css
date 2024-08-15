@@ -121,7 +121,7 @@
     cursor: pointer;
     margin-top: 30px;
     margin-left: 50%;
-    transform: translate(-125%);
+    transform: translate(-150%);
   }
   
   .promo-code button:hover {
