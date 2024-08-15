@@ -83,7 +83,7 @@ const SignupPage = () => {
               <option value="admin">Admin</option>
             </select>
           </div>
-          <button type="submit" disabled={loading}>{loading ? 'Signing up...' : 'Sign Up'}</button>
+          <button className='signup-button' type="submit" disabled={loading}>{loading ? 'Signing up...' : 'Sign Up'}</button>
           {signupError && <p className="signup-error">{signupError}</p>}
         </form>
         <p className="login-link">Already have an account? <Link to="/">Login</Link></p>
