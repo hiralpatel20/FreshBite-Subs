@@ -45,7 +45,8 @@
   .mission-section h2,
   .history-section h2,
   .values-section h2 {
-    font-size: 2em;
+    font-weight: 100;
+    font-style: normal;
     margin-bottom: 15px;
     color: #444;
     text-transform: uppercase;
