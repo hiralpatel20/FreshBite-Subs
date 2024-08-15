@@ -304,60 +304,6 @@ const DetailsPage = () => {
     </form>
     </div> <br></br>
 
-    <div class="Extras choice">
-    <h3>Choose your extras:</h3>
-    <form class="grid-container">
-            <div class="grid-item">
-            <label for="super-size">Super size your sub - Double the meat and cheese<br></br>+$3.50</label><br></br>
-            <input type="number" id="super-size" name="super-size" min="0"></input>
-            </div>
-            
-            <div class="grid-item">
-            <label for="extra-meat-small">Extra Meat Small<br></br>+$2.50</label><br></br>
-            <input type="number" id="extra-meat-small" name="extra-meat-small" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-meat-large">Extra Meat Large<br></br>+$3.50</label><br></br>
-            <input type="number" id="extra-meat-large" name="extra-meat-large" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-bacon">Extra Bacon<br></br>+$2.00</label><br></br>
-            <input type="number" id="extra-bacon" name="extra-bacon" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-mozzarella">Extra Mozzarella Cheese<br></br>+$1.50</label><br></br>
-            <input type="number" id="extra-mozzarella" name="extra-mozzarella" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-cheddar">Extra Cheddar Cheese<br></br>+$1.50</label><br></br>
-            <input type="number" id="extra-cheddar" name="extra-cheddar" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-feta">Extra Feta Cheese<br></br>+$1.50</label><br></br>
-            <input type="number" id="extra-feta" name="extra-feta" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-parmesan">Extra Parmesan Cheese<br></br>+$1.50</label><br></br>
-            <input type="number" id="extra-parmesan" name="extra-parmesan" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="extra-mozza-cheddar-blend">Extra Mozza-Cheddar Blend<br></br>+$1.50</label><br></br>
-            <input type="number" id="extra-mozza-cheddar-blend" name="extra-mozza-cheddar-blend" min="0"></input>
-            </div>
-
-            <div class="grid-item">
-            <label for="no-thank-you">No, thank you</label><br></br>
-            </div>
-    </form>
-</div> <br></br>
-
 <div class="Grilled sub choice">
     <h3>Would you like your sub grilled?</h3>
     <form class="grid-container">
