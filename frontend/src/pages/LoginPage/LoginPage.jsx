@@ -80,7 +80,7 @@ const LoginPage = () => {
               <option value="admin">Admin</option>
             </select>
           </div>
-          <button type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
+          <button className='login-button' type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
           {loginError && <p className="login-error">{loginError}</p>}
         </form>
         <p className="signup-link">Don't have an account? <Link to="/signup">Sign Up</Link></p>
