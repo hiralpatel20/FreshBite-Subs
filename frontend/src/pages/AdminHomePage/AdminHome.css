@@ -1,4 +1,12 @@
 /* Here I added Css for admin home page */
+*{
+  font-family: georgia;
+}
+
+h2{
+  font-style: normal;
+  font-weight: 100;
+}
 .admin-home-container {
     padding: 20px;
     max-width: 1200px;
