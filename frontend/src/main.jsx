@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthContext.jsx';
 
 // Here I create a new ApolloClient instance
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',  // This is GraphQL server endpoint
+  uri: 'https://freshbite-subs-qhd7.onrender.com',  // This is GraphQL server endpoint
   cache: new InMemoryCache(), // Here I set Apollo cache
 });
 
